@@ -1,0 +1,12 @@
+setInterval(함수, 시간) : 일정 시간마다 함수를 실행시키는 속성(시간은 1/1000초)
+clearInterval(변수명) :  지정한 변수(에 저장된 함수 등)를 중지시킴
+loadText.textContent = 문자열 : 문자열 자리에 변수를 넣어야 할 경우 벡틱 문자열 사용.
+`${변수명}` : 벡틱 문자열(``), 문자열 자리에 변수와 문자열을 같이 넣을 때 사용
+mouseenter : 커서가 영역으로 들어오는 이벤트
+mouseleave : 커서가 영역 밖으로 나가는 이벤트
+innerHTML : 내부에 html태그까지 넣을 수 있는 속성
+
+// 한 레인지(0~100)를 다른 레인지 (1~0) , 블러(30~0) 로 변환하는 함수 공식 => 스택오버플로우 검색
+function scale(number, inMin, inMax, outMin, outMax) {
+  return ((number - inMin) * (outMax - outMin)) / (inMax - inMin) + outMin;
+}

@@ -1,0 +1,104 @@
+@import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Roboto&family=Roboto+Condensed&display=swap');
+
+/* CSS의 변수설정 : 색 등을 자주 사용할 경우 변수로 설정*/
+:root {
+  /* --함수명: 속성 */
+  --line-fill: #3498db;
+  --line-empty: #e0e0e0;
+}
+
+/* 전체 태그에 적용 */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #f6f7fb;
+  font-family: 'Roboto Condensed', 'Gowun Dodum', 'sans-serif';
+  display: flex; /* 하위태그들을 정렬 */
+  align-items: center; /* 가로방향 가운데 정렬 */
+  justify-content: center; /* 세로방향 가운데 정렬 */
+  height: 100vh; /* vh: 화면의 %, 100vh = 화면의 100% */
+  overflow: hidden; /* 화면에서 넘어가는 컨텐츠는 가림 */
+  margin: 0;
+}
+
+.container {
+  text-align: center;
+}
+
+.progress-container {
+  display: flex;
+  justify-content: space-between;
+  position: relative; /* 정렬기준 */
+  margin-bottom: 30px;
+  min-width: 350px;
+}
+
+/* progress var 진행상태 바 */
+.progress-container::before {
+  /* ::before는 해당 태그 앞을 가리킴 */
+  content: '';
+  background-color: var(--line-empty);
+  position: absolute;
+  top: 50%; /* 요소가 50%부터 시작됨 */
+  left: 0;
+  transform: translateY(-50%); /* 자신의 세로값 50%만큼을 -방향으로 옮김.*/
+  height: 4px;
+  width: 100%;
+  z-index: -1; /* 겹쳤을 때 -1위치로 (기본값: 0) */
+}
+
+.progress {
+  background-color: var(--line-fill);
+  position: absolute; /* 기준에 따라 위치 */
+  top: 50%; /* 요소가 50%부터 시작됨 */
+  left: 0;
+  transform: translateY(-50%); /* 자신의 세로값 50%만큼을 -방향으로 옮김.*/
+  height: 4px;
+  width: 0%; /* 자바스크립트로 변경 */
+  z-index: -1; /* 겹쳤을 때 -1위치로 (기본값: 0) */
+  transition: all 0.4s ease;
+}
+
+.circle {
+  background-color: white;
+  color: #999; /* 헥사16진수 #fff = #ffffff 흰색, #000 = #000000 검은색 */
+  border-radius: 50%; /* 50%를 주면 원형이 됨 */
+  height: 30px;
+  width: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 3px solid var(--line-empty); /* 색상은 변수--line-empty로 지정 */
+  transition: all 0.4s ease; /* 모든 css에 0.4초가 걸림 */
+}
+/* circle클래스와 active클래스를 동시에 가진 태그만 선택 */
+.circle.active {
+  border-color: var(--line-fill);
+}
+
+/* 버튼 */
+.btn {
+  background-color: var(--line-fill);
+  color: white;
+  border: 0;
+  border-radius: 6px;
+  cursor: pointer;
+  padding: 8px 30px; /* 패딩, 마진의 값이 2개일때: 1) 상하, 2) 좌우 */
+  margin: 5px;
+  font-size: 14px;
+}
+
+.btn:active {
+  transform: scale(0.98); /* 버튼을 누르면 active 부여 => 사이즈를 98%로 변경 */
+}
+
+.btn:focus {
+  outline: 0; /* 아웃라인을 제거해 보기좋게 */
+}
+
+.btn:disabled {
+  background-color: var(--line-empty);
+  cursor: not-allowed; /*  */
+}

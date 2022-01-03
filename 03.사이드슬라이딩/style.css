@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Roboto&family=Roboto+Condensed&display=swap');
+/* font-family: 'Gowun Dodum', sans-serif;
+font-family: 'Roboto', sans-serif;
+font-family: 'Roboto Condensed', sans-serif; */
+
+/* 전체 태그에 적용 */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto Condensed', 'Gowun Dodum', 'sans-serif';
+  display: flex; /* 하위태그들을 정렬 */
+  align-items: center; /* 가로방향 가운데 정렬 */
+  justify-content: center; /* 세로방향 가운데 정렬 */
+  height: 100vh; /* vh: 화면의 %, 100vh = 화면의 100% */
+  overflow: hidden; /* 화면에서 넘어가는 컨텐츠는 가림 */
+  margin: 0;
+}
+
+.container {
+  display: flex;
+  width: 90vw; /*화면의 90% 너비*/
+}
+.panel {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 80vh; /*화면의 80% 높이*/
+  border-radius: 50px;
+  color: white;
+  cursor: pointer; /*마우스를 올렸을 때 클릭할 수 있도록 설정*/
+  flex: 0.5; /*컨텐츠(플렉스)의 비율 0.5*/
+  margin: 10px; /*바깥여백 10px*/
+  position: relative; /*포지션 기준*/
+  transition: all 0.7s ease-in; /*트랜지션: 모든 변화에 걸리는 시간을 0.7초 부여*/
+}
+.panel h3 {
+  font-size: 24px;
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  margin: 0; /*h태그(제목태그)가 가진 기본 margin값을 제거*/
+  opacity: 0; /*투명도 0(안보임) ~ 1(보임)*/
+}
+/* panel클래스와 active클래스를 동시에 가진 태그만 선택 */
+.panel.active {
+  flex: 5; /*컨텐츠(플렉스)의 비율 5 부여*/
+}
+
+.panel.active h3 {
+  opacity: 1; /*글자보이게*/
+  transition: opacity 0.3s ease-in 0.4s; /*오퍼시티변경에 0.3초*/
+}
+/* 미디어쿼리 사용 - 화면이 480px 이하인 경우  (미디어쿼리를 사용하려면 html에 meta태그 viewport필요)*/
+@media (max-width: 480px) {
+  /* 480px이하의 작은 화면일 경우 여백을 없애고 4, 5번째 요소를 안보여주도록 설정 */
+  .container {
+    width: 100vw; /*화면너비 100%*/
+  }
+  .panel:nth-of-type(4),
+  .panel:nth-of-type(5) {
+    display: none; /* 4, 5번째 안보이게 */
+  }
+}

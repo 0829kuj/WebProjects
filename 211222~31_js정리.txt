@@ -1,0 +1,51 @@
+js로 html, css 속성 변경
+
+- 객체 내의 속성지정은 모두 ''로 감싸 문자열로 작성해야 한다
+- 상수는 const, 변수는 let (js는 타입이 필요없음) 로 지정
+객체를 생성한 후 확인은 html파일 열어서 consol에서 객체명으로 호출해보면 됨
+
+- textContent : 텍스트를 변경하는 태그
+	h1.textContent = '변경할 텍스트';
+- setAttribute : 선택된 객체의 속성값을 변경하는 태그
+	img1.setAttribute('src', 'images/dice' + n1 + '.png');
+- classList.add('클래스명') : 선택한 객체에 해당 이름의 클래스 추가
+- classList.remove('클래스명') :  선택한 객체에 해당 이름의 클래스 제거
+
+- document
+- querySelector : document내의 querySelector함수는 쿼리(class, 태그 등)를 선택하는 함수
+	const img1 = document.querySelector('.img1'); 
+- querySelectorAll: 여러 개의 객체를 배열로 저장
+	const panels = document.querySelectorAll('.panel');
+	panel클래스의 모든 객체를 배열로 저장
+- getElementById : id속성으로 선택
+	const body = document.getElementById('gradient');
+
+이벤트리스너
+- addEventListener('이벤트 타입', 함수이름);
+
+
+
+그 외
+- getBoundingClientRect : 화면으로부터 개체의 상단높이를 구함
+
+
+
+
+-주의-
+querySelector 는 클래스의 이름임을 알려줘야하므로 '.클래스명' 으로 지칭함
+반면 classList는 이미 클래스이름임을 알고있으므로 '클래스명' 으로 바로 지칭하면 됨
+
+
+
+// 버튼에 이벤트리스너 달기
+button.addEventListener('이벤트 타입', 함수이름);
+color1.addEventListener('이벤트 종류', 함수);
+
+
+panels.forEach((panel) => {
+  // 람다식, 익명함수 사용
+  panel.addEventListener('click', () => {
+    removeActive();
+    panel.classList.add('active'); // 패널에 active클래스를 추가
+  });
+});

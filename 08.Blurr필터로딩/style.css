@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css?family=Ubuntu');
+
+/* 전체 태그에 적용 */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Ubuntu', sans-serif;
+  display: flex; /* 하위태그들을 정렬 */
+  align-items: center; /* 가로방향 가운데 정렬 */
+  justify-content: center; /* 세로방향 가운데 정렬 */
+  height: 100vh; /* vh: 화면의 %, 100vh = 화면의 100% */
+  overflow: hidden; /* 화면에서 넘어가는 컨텐츠는 가림 */
+  margin: 0;
+}
+
+.bg {
+  background-image: url('https://images.unsplash.com/photo-1641089017750-126ebca8a426?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=875&q=80');
+  background-repeat: no-repeat; /* 사진이 화면보다 작을 때 반복x */
+  background-position: center center;
+  background-size: cover; /* 사진을 현재태그 크기의 100%커버 */
+  position: absolute; /* .bg가 화면전체를 채우도록 position추가, 없으면 화면이 기준, 적용 시 화면에서 뜨게 됨 */
+  top: -30px;
+  left: -30px;
+  width: calc(100vw + 60px);
+  height: calc(100vh + 60px);
+  z-index: -1; /* 뜬 화면보다 .loading-text를 더 위로 올리기 위해 */
+  filter: blur(5px); /* 블러(흐리게) 필터를 적용하는 css속성 */
+}
+
+.loading-text {
+  font-size: 50px;
+  color: #fff;
+}

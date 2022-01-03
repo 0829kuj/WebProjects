@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- viewport : 미디어쿼리 또는 vw, vh를 사용하기 위해 필요함 (화면크기에 맞춰주는 태그) -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>My Project</title>
+  </head>
+  <body>
+    <!-- 컨테이너 클래스로 wrap(포장) -->
+    <div class="container">
+      <!-- 스타일속성은 자주 쓰지않지만 여러 이미지를 넣을 경우 더 편리함 -->
+      <div
+        class="panel active"
+        style="
+          background-image: url('https://cdn.pixabay.com/photo/2021/09/25/19/22/animal-6655641_960_720.jpg');
+        "
+      >
+        <h3>고양이</h3>
+      </div>
+      <div
+        class="panel"
+        style="
+          background-image: url('https://cdn.pixabay.com/photo/2016/11/14/04/45/elephant-1822636_960_720.jpg');
+        "
+      >
+        <h3>코끼리</h3>
+      </div>
+      <div
+        class="panel"
+        style="
+          background-image: url('https://cdn.pixabay.com/photo/2021/10/25/07/03/eagle-6740066_960_720.jpg');
+        "
+      >
+        <h3>독수리</h3>
+      </div>
+      <div
+        class="panel"
+        style="
+          background-image: url('https://cdn.pixabay.com/photo/2018/08/12/16/59/parrot-3601194_960_720.jpg');
+        "
+      >
+        <h3>앵무새</h3>
+      </div>
+      <div
+        class="panel"
+        style="
+          background-image: url('https://cdn.pixabay.com/photo/2021/12/14/09/37/animal-6870176_960_720.jpg');
+        "
+      >
+        <h3>개</h3>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=Single+Day&display=swap');
+
+/* 전체 태그에 적용 */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #efedd6;
+  font-family: 'Single Day', 'Gowun Dodum', 'sans-serif';
+  display: flex; /* 하위태그들을 정렬 */
+  flex-direction: column; /* 세로정렬 */
+  align-items: center; /* 가로방향 가운데 정렬 */
+  justify-content: center; /* 세로방향 가운데 정렬 */
+  overflow-x: hidden; /* x축을 넘어가는 컨텐츠는 가림 */
+  margin: 0;
+}
+
+h1 {
+  margin: 10px;
+}
+
+.box {
+  background-color: steelblue;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 400px;
+  height: 200px;
+  margin: 10px;
+  border-radius: 10px;
+  box-shadow: 2px 4px 5px rgba(0, 0, 0, 0.3);
+  transform: translateX(400%);
+  transition: transform 0.4s ease;
+}
+
+/* box클래스 중 짝수번만 적용 */
+.box:nth-of-type(even) {
+  transform: translateX(-400%);
+  /* 짝수번째는 왼쪽, 홀수번째는 오른쪽으로 가게 됨 */
+}
+
+/* box클래스에 show클래스가 생기면 원래자리로 돌아감 */
+.box.show {
+  transform: translateX(0);
+}
+
+/* box클래스 아래의 h2태그 */
+.box h2 {
+  font-size: 45px;
+}

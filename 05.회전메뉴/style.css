@@ -1,0 +1,151 @@
+@import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
+
+/* 전체 태그에 적용 */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Lato', sans-serif;
+  background-color: #333; /* 사진이 밀려났을 때 배경색 */
+  color: #222;
+  overflow-x: hidden; /* 화면을 넘어가는 가로컨텐츠는 가림 */
+  margin: 0;
+}
+
+.container {
+  background-color: #fafafa;
+  width: 100vw; /* 가로 100% */
+  min-height: 100vh; /* 최소세로 100% */
+  padding: 50px;
+  transition: transform 0.5s linear; /* transform속성을 0.5초에 걸쳐 일정한 속도로 */
+  transform-origin: top left; /* 회전중심을 좌측최상단으로 */
+}
+
+/* container, show-nav 클래스를 모두 가졌을 때 => 회전 */
+.container.show-nav {
+  transform: rotate(-20deg);
+}
+
+/* 버튼 container 클래스 */
+.circle-container {
+  position: fixed; /*위치 고정*/
+  top: -100px;
+  left: -100px;
+}
+
+.circle {
+  background-color: #ff7979;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%; /* 원형으로 만듦 */
+  position: relative; /* 내부 버튼2개의 위치기준 */
+  transition: transform 0.5s linear;
+}
+
+/* show-nav클래스가 .container에 추가되면 .circle에 적용됨 */
+.container.show-nav .circle {
+  transform: rotate(-70deg);
+}
+
+/* circle클래스를 가진 button태그 */
+.circle button {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  height: 100px;
+  background-color: transparent;
+  border: 0px;
+  font-size: 26px;
+  color: white;
+}
+
+.circle button:focus {
+  outline: none; /* 버튼을 클릭했을 경우 아웃라인을 안보이도록 */
+}
+
+/* circle클래스를 가진 button태그의 id가 open */
+.circle button#open {
+  left: 60%;
+}
+.circle button#close {
+  top: 60%;
+  transform: rotate(90deg);
+  transform-origin: top left;
+}
+
+/* 하단메뉴 : show-nav 클래스가 있으면 나타남 */
+.container.show-nav + nav li {
+  transform: translateX(0);
+  transition-delay: 0.3s;
+}
+
+nav {
+  position: fixed;
+  bottom: 40px;
+  left: 0;
+  z-index: 100;
+}
+
+nav ul {
+  list-style-type: none;
+  padding-left: 30px;
+}
+
+nav ul li {
+  text-transform: uppercase;
+  color: #fff;
+  margin: 40px 0;
+  transform: translateX(-100%); /* 회전하기 전에는 -100% x위치라 화면 밖임 */
+  transition: transform 0.4s ease-in;
+}
+
+nav ul li i {
+  font-size: 20px;
+  margin-right: 10px;
+}
+
+nav ul li + li {
+  margin-left: 15px;
+  transform: translateX(-150%);
+}
+
+nav ul li + li + li {
+  margin-left: 30px;
+  transform: translateX(-200%);
+}
+
+nav a {
+  color: #fafafa;
+  text-decoration: none;
+  transition: all 0.5s;
+}
+
+nav a:hover {
+  color: #ff7979;
+  font-weight: bold;
+}
+
+.content img {
+  max-width: 100%;
+}
+
+.content {
+  max-width: 1000px;
+  margin: 50px auto;
+}
+
+.content h1 {
+  margin: 0;
+}
+
+.content small {
+  color: #555;
+  font-style: italic;
+}
+
+.content p {
+  color: #333;
+  line-height: 1.5;
+}

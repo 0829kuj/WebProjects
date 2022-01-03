@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Roboto&family=Roboto+Condensed&display=swap');
+
+/* 전체 태그에 적용 */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto Condensed', 'Gowun Dodum', 'sans-serif';
+  display: flex; /* 하위태그들을 정렬 */
+  flex-direction: column; /* 세로정렬 */
+  align-items: center; /* 가로방향 가운데 정렬 */
+  justify-content: center; /* 세로방향 가운데 정렬 */
+  height: 100vh; /* vh: 화면의 %, 100vh = 화면의 100% */
+  overflow: hidden; /* 화면에서 넘어가는 컨텐츠는 가림 */
+  margin: 0;
+}
