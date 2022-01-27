@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>jQuery - 이벤트</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+      body {
+        font-size: 17px;
+        font-family: Arial, Helvetica, sans-serif;
+        background: #f4f4f4;
+        line-height: 1.5em;
+      }
+      header {
+        background: #333;
+        color: white;
+        padding: 20px;
+        text-align: center;
+        border-bottom: 4px solid black;
+        margin-bottom: 10px;
+      }
+      #container {
+        width: 90%;
+        margin: auto;
+        padding: 10px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <h1>jQuery 시작하기</h1>
+    </header>
+    <div id="container">
+      <h3>마우스 이벤트</h3>
+      <button id="btn1">버튼 1</button>
+      <button id="btn2">버튼 2</button>
+      <button id="btn3">버튼 3</button>
+      <p class="para1">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci tempore dolor optio praesentium numquam vero quia nam soluta? Repudiandae neque veritatis nihil itaque, expedita placeat minima delectus amet?
+        Voluptatem, repudiandae.
+      </p>
+      <h1 id="coords"></h1>
+      <hr />
+      <!-- form -->
+      <form action="">
+        <label for="name">Name</label><br />
+        <input type="text" id="name" name="name" />
+        <br />
+        <label for="email">Email</label><br />
+        <input type="email" id="emial" name="email" />
+        <br />
+        <label for="gender">Gender</label><br />
+        <select name="gender" id="gender">
+          <option value="mail">남성</option>
+          <option value="femail">여성</option>
+          <option value="animal" selected>동물</option>
+        </select>
+        <br />
+        <!-- input 대신 button도 동일하게 가능 -->
+        <input type="submit" value="전송" />
+      </form>
+    </div>
+    <script>
+      // document(html)가 준비가 되면 함수를 실행
+      $(document).ready(function () {
+        $('#btn1').on('mouseenter', function () {
+          $('.para1').hide();
+        });
+        $('#btn1').on('mouseleave', function () {
+          $('.para1').show();
+        });
+        $('#btn2').click(() => {
+          $('.para1').show();
+        });
+        $('#btn3').click(() => {
+          $('.para1').toggle();
+        });
+      });
+      // 이벤트 객체 사용
+      // $(document).on('mousemove', function (e) {
+      //   // console.log(e.clientX, e.clientY);
+      //   $('#coords').text('x좌표: ' + e.clientX + ' y좌표: ' + e.clientY);
+      // });
+      $('input').focus(function () {
+        // input창에 커서가 위치할때의 이벤트
+        $(this).css('background-color', 'pink');
+        // this는 이벤트가 발생한 객체를 가리킴
+      });
+      $('input').blur(function () {
+        // 커서가 input창을 나갔을때
+        $(this).css('background-color', 'white');
+      });
+      $('select').change(function (e) {
+        // 선택을 바꿨을때
+        alert('바뀌었음');
+        alert(e.target.value); // 바뀐 값 보여줌
+      });
+    </script>
+  </body>
+</html>

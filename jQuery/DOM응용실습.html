@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>jQuery - DOM응용실습</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+      body {
+        font-size: 17px;
+        font-family: Arial, Helvetica, sans-serif;
+        background: #f4f4f4;
+        line-height: 1.5em;
+      }
+      header {
+        background: #333;
+        color: white;
+        padding: 20px;
+        text-align: center;
+        border-bottom: 4px solid black;
+        margin-bottom: 10px;
+      }
+      #container {
+        width: 90%;
+        margin: auto;
+        padding: 10px;
+      }
+      .myclass {
+        color: skyblue;
+        background-color: blanchedalmond;
+        font-size: 2em;
+        font-family: cursive;
+        font-weight: 700;
+        padding: 10px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <h1>jQuery 시작하기</h1>
+    </header>
+    <div id="container">
+      <button id="btn1">버튼1</button>
+      <p class="para1">첫번째 문장입니다.</p>
+      <p class="para2">두번째 문장입니다.</p>
+      <div id="myDiv"></div>
+      <ul>
+        <li>리스트 아이템1</li>
+        <li>리스트 아이템2</li>
+        <li>리스트 아이템3</li>
+        <li>리스트 아이템4</li>
+      </ul>
+    </div>
+
+    <script>
+      $(document).ready(function () {
+        // 객체형식으로 여러개의 css속성넣기. 단, css속성이 많은 경우 css에 클래스를 만들어 클래스를 추가해주는 방법을 추천.
+        $('p.para1').css({ color: 'tomato', background: 'greenyellow' });
+        // btn1클릭시 클래스토글 이벤트
+        $('#btn1').on('click', function () {
+          $('p.para2').toggleClass('myclass');
+        });
+      });
+      // 텍스트 내용만 수정 vs html + 텍스트 수정
+      // $('#myDiv').text('문자열 내용 입력');
+      $('#myDiv').html('<h3>내용1</h3><h5>내용2</h5>');
+
+      // 태그를 추가하는 방법(append, prepend)
+      // append: 맨 마지막 위치에 추가
+      $('ul').append('<li>append로 li태그 추가</li>');
+      // prepend: 맨 위쪽 위치에 추가
+      $('ul').prepend('<li>prepend로 li태그 추가</li>');
+
+      // 배열 처리 반복문
+      // jQuery의 반복문
+      const 과일 = ['사과', '당근', '배', '수박', '바나나', '귤'];
+      $.each(과일, function (i, val) {
+        $('ul').append('<li>' + val + '</il>');
+      });
+      // 자바스크립트의 반복문 forEach
+      과일.forEach(function (val, i) {
+        $('ul').append('<li>' + val + '</il>');
+      });
+      // 제이쿼리로 가능한 작업은 자바스크립트에서도 모두 가능함(반대는 불가능한 경우존재). 둘 다 혼용도 가능.
+    </script>
+  </body>
+</html>

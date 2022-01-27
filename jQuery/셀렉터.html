@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>jQuery - 셀렉터</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+      body {
+        font-size: 17px;
+        font-family: Arial, Helvetica, sans-serif;
+        background: #f4f4f4;
+        line-height: 1.5em;
+      }
+      header {
+        background: #333;
+        color: white;
+        padding: 20px;
+        text-align: center;
+        border-bottom: 4px solid black;
+        margin-bottom: 10px;
+      }
+      #container {
+        width: 90%;
+        margin: auto;
+        padding: 10px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <h1>jQuery 시작하기</h1>
+    </header>
+    <div id="container">
+      <h1 id="heading1">Heading One</h1>
+      <p id="para1">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. <span>Accusantium</span> pariatur excepturi quos recusandae qui! Quibusdam, similique doloremque nihil nostrum consequatur expedita vero dolorem animi
+        corrupti hic. Voluptas accusantium animi consequuntur.
+      </p>
+      <h1 class="heading2">Heading Two</h1>
+      <p class="para2">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium pariatur excepturi quos recusandae qui! Quibusdam, similique doloremque nihil <span>nostrum consequatur</span> expedita vero dolorem animi
+        corrupti hic. Voluptas accusantium animi consequuntur.
+      </p>
+      <ul id="list">
+        <li>List Item</li>
+        <li>List Item</li>
+        <li>List Item</li>
+        <li>List Item</li>
+        <li>List Item</li>
+        <li>List Item</li>
+        <li>List Item</li>
+        <li>List Item</li>
+      </ul>
+      <!-- input 태그 -->
+      <input type="button" value="버튼" />
+      <input type="submit" value="전송" />
+      <input type="text" />
+    </div>
+
+    <script>
+      // 제이쿼리 사용해보기: 태그선택 $('선택자')	태그명 .클래스명 #id명
+      // $('h1').hide(); // 모든 h1태그를 안보이게
+      // $('h1#heading1').hide();
+      // $('h1.heading2').hide();
+      $('p span').css('color', 'red');
+      $('ul#list li:even').css('background-color', 'gray'); // ul태그중 id가 list인 태그 아래의 li태그 중 짝수번째 태그만 선택
+      $('ul#list li:odd').css('background-color', 'pink'); // 위와 같되 홀수번째선택
+      $('ul#list li:nth-child(3)').css('list-style', 'none');
+      $('input:button').hide(); // 태그:타입 으로도 선택가능
+    </script>
+  </body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AJAX 사용</title>
+    <link rel="shortcut icon" href="#" type="image/x-icon" />
+  </head>
+  <body>
+    <h1>AJAX 사용하기</h1>
+    <div id="output"></div>
+    <button id="loadNew">불러오기</button>
+    <script>
+      const output = document.getElementById('output');
+      const button = document.getElementById('loadNew');
+
+      button.addEventListener('click', () => {
+        loadAjax(); // 버튼을 클릭했을 때 ajax를 실행하는 함수
+      });
+
+      function loadAjax() {
+        // 1단계: HTTP리퀘스트 객체를 생성(상수명 ajax)
+        const ajax = new XMLHttpRequest();
+        ajax.onreadystatechange = function () {
+          // console.log('stage 변화', ajax.readyState, ajax.status);
+          if (ajax.readyState == 4 && ajax.status == 200) {
+            // console.log(ajax.responseText);
+            const dataJSON = JSON.parse(ajax.responseText);
+            const data = dataJSON.results[0];
+            const html = '<h2>' + data.name.first + ' ' + data.name.lase + '</h2>' + '<img src="' + data.picture.large + '">';
+            output.innerHTML = html;
+          }
+        };
+        // 2단계: 주소 설정(get방식으로 지정한 주소로 보냄)
+        ajax.open('GET', 'https://randomuser.me/api/', true);
+        // 3단계: 실제 요청 보내기
+        ajax.send();
+      }
+    </script>
+  </body>
+</html>

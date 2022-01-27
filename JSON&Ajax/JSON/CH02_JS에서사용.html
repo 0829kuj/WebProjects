@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>자바스크립트에서 사용하기</title>
+    <link rel="shortcut icon" href="#" type="image/x-icon" />
+  </head>
+  <body>
+    <h1>JSON을 자바스크립트에서 사용</h1>
+    <div id="output"></div>
+    <script type="text/javascript">
+      const person = {
+        name: 'Joe',
+        'last Name': 'Miller',
+        car1: 'Mustang',
+        car2: 'F150',
+      };
+      let str1 = 'car';
+      let cnt = 1;
+      // 객체(object)의 값에 접근하는 방법 1. person.car1  2. person["car2"]
+      console.log(person[str1 + cnt]);
+      cnt++;
+      console.log(person[str1 + cnt]);
+
+      // myObj객체 안의 friend의 키값에는 배열이 저장되어있음
+      const myObj = {
+        friends: [
+          {
+            firstName: '홍',
+            lastName: '길동',
+          },
+          {
+            firstName: '손',
+            lastName: '흥민',
+          },
+          {
+            firstName: '김',
+            lastName: '연경',
+          },
+          {
+            firstName: '박',
+            lastName: '찬호',
+          },
+        ],
+      };
+
+      const users = myObj.friends; // 배열 users에 friends의 객체들이 저장됨
+      let html = ''; // 공백 html
+      for (let x in users) {
+        html += Number(x) + 1 + ' . ' + users[x].firstName + ' ' + users[x].lastName + '<br>';
+      } // 변수html에 배열friends가 한 명씩 반복되며 x의 인덱스, x의 성, x의 이름 계속 더함. 한 명이 끝나면 <br> 태그로 줄바꿈
+      // Number(x)는 해당 아이템의 인덱스를 나타내는데, 인덱스는 0부터 시작이므로 1번부터 출력하기위해 +1 해줌
+      // html에는 문자열로 성, 이름, br태그가 들어감
+      document.getElementById('output').innerHTML = html; // innerHTML은 문자열에 html태그까지 포함해서 자식태그로 넣어줌. 고로 <br>까지 출력됨.
+    </script>
+  </body>
+</html>
