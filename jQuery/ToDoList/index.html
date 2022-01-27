@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <title>TO DO LIST</title>
+    <!-- 메인 CSS -->
+    <link rel="stylesheet" href="style.css" />
+    <!-- 폰트오썸 CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.css" />
+    <!-- 제이쿼리 CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <input type="text" class="txtb" placeholder="할일을 기록합니다" />
+      <div class="todo">
+        <h3>해야 할 일</h3>
+      </div>
+      <div class="comp">
+        <h3>완료한 일</h3>
+      </div>
+    </div>
+
+    <script>
+      // 추가아이콘 어디다 더하지???    .task가 해야 할 일인듯?
+      // input창에 입력한 문구는 엔터를 누르면 해야할일로 들어감 > 할일우측의 휴지통을 누르면 삭제, 체크아이콘을 누르면 완료한일로 넘어감 인듯??
+
+      // 추가할 div 태그들 정의 const는 상수 변하지 않음
+      const task = "<div class='task'></div>";
+      const del = "<i class='fas fa-trash-alt'></i>";
+      const check = "<i class='fas fa-check'></i>";
+
+      //키 입력시
+      $('.txtb').on('keyup', function (e) {
+        let txt = $('.txtb').val(); // 입력값을 txt에 저장
+        if (e.keyCode == 13 && txt != null) {
+          // 입력된 키코드가 13(enter)이거나 txt가 null이 아닐경우
+          $('.todo').append(task);
+          $('.todo .task:last').text(txt);
+          $('.todo .task:last').append(del, check);
+          $('.txtb').val(''); // input창 클리어
+        }
+      });
+
+      //  클릭 이벤트 : 해야할일이나 완료된일을 클릭시
+      $('.todo, .comp').click(function (e) {
+        console.log(e.target);
+        let target = $(e.target);
+        if (target.is('.fa-trash-alt')) {
+          // 휴지통 아이콘을 클릭하면
+          let delItem = target.parent(); // 클릭한 아이콘의 부모태그
+          delItem.fadeOut(function () {
+            delItem.remove();
+          });
+        } else if (target.is('.fa-check')) {
+          let compItem = target.parent(); // 클릭한 아이콘의 부모태그
+          compItem.fadeOut(function () {
+            $('.comp').append(compItem); // 완료리스트로 이동
+            compItem.fadeIn();
+          });
+        }
+      });
+    </script>
+  </body>
+</html>
