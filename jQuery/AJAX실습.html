@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="shortcut icon" href="#" type="image/x-icon" />
+    <title>jQuery - AJAX</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+      body {
+        font-size: 17px;
+        font-family: Arial, Helvetica, sans-serif;
+        background: #f4f4f4;
+        line-height: 1.5em;
+      }
+      header {
+        background: #333;
+        color: white;
+        padding: 20px;
+        text-align: center;
+        border-bottom: 4px solid black;
+        margin-bottom: 10px;
+      }
+      #container {
+        width: 90%;
+        margin: auto;
+        padding: 10px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <h1>AJAX 사용하기</h1>
+    </header>
+    <div id="container">
+      <div id="results"></div>
+    </div>
+
+    <script>
+      $.ajax({
+        method: 'GET', // HTTP 요청방식 (get, post)
+        url: 'https://jsonplaceholder.typicode.com/posts', // 서버의 url주소
+        //data:     => 여기서는 보낼 데이터 없이 받기만 하므로 생략
+        dataType: 'json', // 서버에서 보내줄 데이터의 타입
+      }).done(function (data) {
+        // HTTP 요청 성공시 결과데이터가 done() 메서드로 전달됨
+        // console.log(data);
+        $.each(data, function (i, item) {
+          $('#results').append(`<h3>${item.title}</h3><p>${item.body}</p>`); // `` 벡틱 사용
+        });
+      });
+    </script>
+  </body>
+</html>

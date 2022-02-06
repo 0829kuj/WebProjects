@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="shortcut icon" href="#" type="image/x-icon" />
+    <title>jQuery - AJAX</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+      body {
+        font-size: 17px;
+        font-family: Arial, Helvetica, sans-serif;
+        background: #f4f4f4;
+        line-height: 1.5em;
+      }
+      header {
+        background: #333;
+        color: white;
+        padding: 20px;
+        text-align: center;
+        border-bottom: 4px solid black;
+        margin-bottom: 10px;
+      }
+      #container {
+        width: 90%;
+        margin: auto;
+        padding: 10px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <h1>AJAX 사용하기</h1>
+    </header>
+    <div id="container">
+      <div id="results"></div>
+    </div>
+    <script>
+      // 보안문제로 이 예제는 동작안됨 -> cors 확장프로그램 깔아서 테스트해보기
+      $.ajax({
+        method: 'GET', // HTTP 요청방식 (get, post)
+        url: 'https://www.dhlottery.co.kr/common.do?method=getLottoNumber&drwNo=999', // 서버의 url주소
+        dataType: 'json', // 서버에서 보내줄 데이터의 타입
+      }).done(function (data) {
+        console.log(data);
+        $('#results').append(`<h3>${data.drwNoDate}</h3><p>${data.drwNo1}${data.drwNo2}</p>`); // `` 벡틱 사용
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="shortcut icon" href="#" type="image/x-icon" />
+    <title>jQuery - AJAX</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+      body {
+        font-size: 17px;
+        font-family: Arial, Helvetica, sans-serif;
+        background: #f4f4f4;
+        line-height: 1.5em;
+      }
+      header {
+        background: #333;
+        color: white;
+        padding: 20px;
+        text-align: center;
+        border-bottom: 4px solid black;
+        margin-bottom: 10px;
+      }
+      #container {
+        width: 90%;
+        margin: auto;
+        padding: 10px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <h1>AJAX 사용하기 POST</h1>
+    </header>
+    <div id="container">
+      <h3>포스트 추가</h3>
+      <form action="https://jsonplaceholder.typicode.com/posts" id="postForm" method="post">
+        <input type="text" id="title" placeholder="제목" /><br />
+        <textarea id="body" cols="30" rows="10" placeholder="내용"></textarea><br />
+        <input type="submit" value="전송" />
+      </form>
+    </div>
+
+    <script>
+      // submit버튼을 눌렀을때의 이벤트
+      $('#postForm').submit(function (e) {
+        e.preventDefault(); // 이벤트발생시 서버로 보내는 요청을 중지
+        // console.log('서버주소로 요청안함');
+        let title = $('#title').val(); // title창의 내용을 저장
+        let body = $('#body').val(); // body창의 내용을 저장
+        // let url = "https://jsonplaceholder.typicode.com/posts"; // 방법 1. 주소를 직접입력
+        let url = $(this).attr('action'); // 방법 2. form의 action 속성의 값(주소)을 선택해 저장. attr은 특정 속성의 값을 선택하는 메서드.
+        $.post(url, { title: title, body: body }) // 주소로 보낼 데이터
+          .done(function (data) {
+            console.log('포스트 저장됨'); // 포스트 성공
+            console.log(data); // 서버에서 받은 데이터 출력
+          });
+      }); // 이 예제는 실제로 서버에 데이터가 저장되는건 아님
+
+      // $.ajax({
+      //   method: 'POST', // HTTP 요청방식 (get, post)
+      //   url: 'https://jsonplaceholder.typicode.com/posts', // 서버의 url주소
+      //   dataType: 'json', // 서버에서 보내줄 데이터의 타입
+      // }).done(function (data) {
+      //   // HTTP 요청 성공시 결과데이터가 done() 메서드로 전달됨
+      //   // console.log(data);
+      //   $.each(data, function (i, item) {
+      //     $('#results').append(`<h3>${item.title}</h3><p>${item.body}</p>`); // `` 벡틱 사용
+      //   });
+      // });
+    </script>
+  </body>
+</html>

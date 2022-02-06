@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="shortcut icon" href="#" type="image/x-icon" />
+    <title>jQuery - AJAX</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+      body {
+        font-size: 17px;
+        font-family: Arial, Helvetica, sans-serif;
+        background: #f4f4f4;
+        line-height: 1.5em;
+      }
+      header {
+        background: #333;
+        color: white;
+        padding: 20px;
+        text-align: center;
+        border-bottom: 4px solid black;
+        margin-bottom: 10px;
+      }
+      #container {
+        width: 90%;
+        margin: auto;
+        padding: 10px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <h1>AJAX 사용하기</h1>
+    </header>
+    <div id="container">
+      <div id="results"></div>
+    </div>
+    <script>
+      const url = 'http://apis.data.go.kr/B553766/smt-path/path'; /*URL*/
+      let queryParams = '?' + encodeURIComponent('serviceKey') + '=' + 'Md2Xq4q%2F8%2BPQzJzn9xffXvPflFmxQSzY6GE1TiGcq2Opw9APrgdw6OVJXnq0b%2FsjvW8FdJMUqKvYxMfyYix%2FJQ%3D%3D'; /*인증 Key*/
+      queryParams += '&' + encodeURIComponent('pageNo') + '=' + encodeURIComponent('1'); /**/
+      queryParams += '&' + encodeURIComponent('numOfRows') + '=' + encodeURIComponent('10'); /**/
+      queryParams += '&' + encodeURIComponent('dept_station_code') + '=' + encodeURIComponent('2728'); /**/
+      queryParams += '&' + encodeURIComponent('dest_station_code') + '=' + encodeURIComponent('0214'); /**/
+      queryParams += '&' + encodeURIComponent('week') + '=' + encodeURIComponent('DAY'); /**/
+
+      $.ajax({
+        method: 'GET', // HTTP 요청방식 (get, post)
+        url: url + queryParams, // 서버의 url주소
+        dataType: 'json', // 서버에서 보내줄 데이터의 타입
+      }).done(function (response) {
+        // 요청성공시 결과데이터
+        console.log(response.data);
+        const data = response.data; // 배열 데이터만 입력
+
+        $.each(data, function (i, item) {
+          $('#results').append(`<p>${item.wrt_dt}</p>${item.No1}${item.html_origin_cn}`); // `` 벡틱 사용
+        });
+      });
+    </script>
+  </body>
+</html>
